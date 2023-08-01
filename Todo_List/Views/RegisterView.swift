@@ -12,12 +12,6 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
-            // Header
-            HeaderView(title: "Register",
-                       subtitle: "Start organizing todos",
-                       angle: -15,
-                       background: .orange)
-            
             Form {
                 TextField("Full name", text: $viewModel.name)
                     .textFieldStyle(DefaultTextFieldStyle())
@@ -38,15 +32,12 @@ struct RegisterView: View {
                 
                 TLButton(
                     title: "Create account",
-                         background: .green
+                    background: .green
                 ) {
                     viewModel.register()
                 }
                 .padding()
             }
-            .offset(y: -50)
-            
-            Spacer()
         }
     }
 }

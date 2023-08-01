@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  Todo_List
 //
-//  Created by Cosmin Ghinea on 26.05.2023.
+//  Created by Cosmin Ghinea on 28.06.2023.
 //
 
 import SwiftUI
@@ -10,16 +10,11 @@ import SwiftUI
 struct LoginView: View {
     @StateObject var viewModel = LoginViewViewModel()
     @State private var isShowingForgotPasswordModal = false
-
+    @Binding var isPresentingLoginModal: Bool
+    
     var body: some View {
         NavigationView {
             VStack {
-                // Header
-                HeaderView(title: "To Do List",
-                           subtitle: "Get things done",
-                           angle: 15,
-                           background: .pink)
-                
                 Form {
                     TextField("Email", text: $viewModel.email)
                         .textFieldStyle(DefaultTextFieldStyle())
@@ -47,7 +42,6 @@ struct LoginView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
-                .offset(y: -50)
                 
                 // Create account
                 VStack {
@@ -57,10 +51,12 @@ struct LoginView: View {
                                    destination: RegisterView())
                 }
                 .padding(.bottom, 50)
-                
-                Spacer()
             }
         }
+        .navigationBarTitle("Log in", displayMode: .inline)
+        .navigationBarItems(trailing: Button("Dismiss", action: {
+            isPresentingLoginModal.toggle()
+        }))
         .sheet(isPresented: $isShowingForgotPasswordModal) {
             ForgotPasswordModalView(email: $viewModel.email, resetPasswordAction: {
                 viewModel.resetPassword()
@@ -81,6 +77,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        @State var isPresentingLoginModal = true
+        LoginView(isPresentingLoginModal: $isPresentingLoginModal)
     }
 }
