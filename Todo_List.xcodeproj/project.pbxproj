@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A0E6D792A23B87A008E3214 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0E6D782A23B87A008E3214 /* Launch Screen.storyboard */; };
+		8A56D63D2D314F53005C8B63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A56D63C2D314F53005C8B63 /* GoogleService-Info.plist */; };
 		8A5A76412A4C33F500D78BB6 /* SignInWithAppleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A76402A4C33F500D78BB6 /* SignInWithAppleCoordinator.swift */; };
 		8A5A76432A4C345400D78BB6 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A76422A4C345400D78BB6 /* SignInWithAppleButton.swift */; };
 		8A5A76452A4C36CD00D78BB6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5A76442A4C36CD00D78BB6 /* LoginView.swift */; };
@@ -18,7 +19,6 @@
 		8AD90F6D2A20EFAA00CD9545 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD90F6C2A20EFAA00CD9545 /* FirebaseAuth */; };
 		8AD90F6F2A20EFAA00CD9545 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD90F6E2A20EFAA00CD9545 /* FirebaseFirestore */; };
 		8AD90F712A20EFAA00CD9545 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD90F702A20EFAA00CD9545 /* FirebaseFirestoreSwift */; };
-		8AD90F732A20F14B00CD9545 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AD90F722A20F14B00CD9545 /* GoogleService-Info.plist */; };
 		8AD90F792A211D0500CD9545 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD90F782A211D0500CD9545 /* ProfileView.swift */; };
 		8AD90F7D2A211DB500CD9545 /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD90F7C2A211DB500CD9545 /* NewItemView.swift */; };
 		8AD90F7F2A211DD000CD9545 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD90F7E2A211DD000CD9545 /* SignInView.swift */; };
@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		8A0E6D782A23B87A008E3214 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8A405A322A4DA607004892CC /* Todo_List.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Todo_List.entitlements; sourceTree = "<group>"; };
+		8A56D63C2D314F53005C8B63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A5A76402A4C33F500D78BB6 /* SignInWithAppleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleCoordinator.swift; sourceTree = "<group>"; };
 		8A5A76422A4C345400D78BB6 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
 		8A5A76442A4C36CD00D78BB6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		8AD90F5D2A20EDFD00CD9545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AD90F5F2A20EDFE00CD9545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD90F622A20EDFE00CD9545 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8AD90F722A20F14B00CD9545 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AD90F782A211D0500CD9545 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8AD90F7C2A211DB500CD9545 /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
 		8AD90F7E2A211DD000CD9545 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -114,6 +114,7 @@
 		8AD90F5A2A20EDFD00CD9545 /* Todo_List */ = {
 			isa = PBXGroup;
 			children = (
+				8AD90F5B2A20EDFD00CD9545 /* Todo_ListApp.swift */,
 				8A405A322A4DA607004892CC /* Todo_List.entitlements */,
 				8A5A763F2A4C33CE00D78BB6 /* Services */,
 				8AD90F772A20F3B100CD9545 /* Other */,
@@ -178,8 +179,7 @@
 		8AD90F772A20F3B100CD9545 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				8AD90F5B2A20EDFD00CD9545 /* Todo_ListApp.swift */,
-				8AD90F722A20F14B00CD9545 /* GoogleService-Info.plist */,
+				8A56D63C2D314F53005C8B63 /* GoogleService-Info.plist */,
 				8AD90F5F2A20EDFE00CD9545 /* Assets.xcassets */,
 				8AF2AD4B2A225F8000D5DC5E /* Extensions.swift */,
 				8A0E6D782A23B87A008E3214 /* Launch Screen.storyboard */,
@@ -220,7 +220,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					8AD90F572A20EDFD00CD9545 = {
 						CreatedOnToolsVersion = 14.3;
@@ -254,9 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AD90F632A20EDFE00CD9545 /* Preview Assets.xcassets in Resources */,
+				8A56D63D2D314F53005C8B63 /* GoogleService-Info.plist in Resources */,
 				8AD90F602A20EDFE00CD9545 /* Assets.xcassets in Resources */,
 				8A0E6D792A23B87A008E3214 /* Launch Screen.storyboard in Resources */,
-				8AD90F732A20F14B00CD9545 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -333,6 +334,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -347,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -361,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -393,6 +396,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -401,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -420,6 +424,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo_List/Preview Content\"";
+				DEVELOPMENT_TEAM = G7VQ69B3X8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -433,7 +438,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Todo-List";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Todo-ListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -450,6 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo_List/Preview Content\"";
+				DEVELOPMENT_TEAM = G7VQ69B3X8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -463,7 +469,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Todo-List";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Todo-ListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

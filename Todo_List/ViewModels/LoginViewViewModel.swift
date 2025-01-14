@@ -14,7 +14,7 @@ class LoginViewViewModel: ObservableObject {
     @Published var password = ""
     @Published var errorMessage = ""
     @Published var resetPasswordEmailSent = false
-    @Published var showResetPasswordAlert = false 
+    @Published var showResetPasswordAlert = false
     
     init() { }
     
@@ -22,7 +22,19 @@ class LoginViewViewModel: ObservableObject {
         guard validate() else {
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password)
+        
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (_, error) in
+            guard let self = self else { return }
+            
+            if let error = error as NSError? {
+                print("Login error code: \(error.code)")
+                print("Login error description: \(error.localizedDescription)")
+                self.handleAuthError(error)
+            } else {
+                // Handle successful login
+                self.errorMessage = ""
+            }
+        }
     }
     
     private func validate() -> Bool {
@@ -39,34 +51,17 @@ class LoginViewViewModel: ObservableObject {
             return false
         }
         
-        checkEmailRegistered()
-        
         return true
     }
     
-    private func checkEmailRegistered() {
-        Auth.auth().fetchSignInMethods(forEmail: email) { [weak self] (signInMethods, error) in
-            guard let self = self else { return }
-            
-            if let error = error {
-                self.errorMessage = "An error occurred: \(error.localizedDescription)"
-            } else if let signInMethods = signInMethods, !signInMethods.isEmpty {
-                self.checkPassword()
-            } else {
-                self.errorMessage = "Email is not registered."
-            }
-        }
-    }
-    
-    private func checkPassword() {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] (_, error) in
-            guard let self = self else { return }
-            
-            if error != nil {
-                self.errorMessage = "Invalid password. Please try again."
-            } else {
-                Auth.auth().signIn(withEmail: self.email, password: self.password)
-            }
+    private func handleAuthError(_ error: NSError) {
+        switch error.code {
+        case AuthErrorCode.wrongPassword.rawValue:
+            self.errorMessage = "Invalid password. Please try again."
+        case AuthErrorCode.userNotFound.rawValue:
+            self.errorMessage = "Email is not registered."
+        default:
+            self.errorMessage = "An error occurred: \(error.localizedDescription)"
         }
     }
     
@@ -74,7 +69,7 @@ class LoginViewViewModel: ObservableObject {
         Auth.auth().sendPasswordReset(withEmail: email) { [weak self] error in
             if let error = error {
                 // Handle the error
-                print("Password reset failed: \(error.localizedDescription)")
+                print("Password reset error: \(error.localizedDescription)")
             } else {
                 // Password reset email sent successfully
                 print("Password reset email sent to \(self?.email ?? "")")

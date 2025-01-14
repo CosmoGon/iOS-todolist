@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Firebase
+import AuthenticationServices
+import CryptoKit
 
 struct SignInView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -13,14 +16,16 @@ struct SignInView: View {
     @State var coordinator: SignInWithAppleCoordinator?
     @State private var animationProgress: Double = 0.0
     @State private var isPresentingLoginModal = false
+    @State private var isSignedIn = false
+    @State private var userId: String = ""
     
     func interpolate(_ progress: Double, delay: Double) -> CGFloat {
         let value = max(0, progress - delay)
         return CGFloat(1 - value) * 30
     }
-
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HeaderView(title: "To Do List",
                            subtitle: "Get things done",
@@ -34,11 +39,15 @@ struct SignInView: View {
                         self.coordinator = SignInWithAppleCoordinator()
                         if let coordinator = self.coordinator {
                             coordinator.startSignInWithAppleFlow {
-                                print("You successfully signed in.")
-                                self.presentationMode.wrappedValue.dismiss()
+                                print("Successfully signed in.")
+                                if let uid = Auth.auth().currentUser?.uid {
+                                    self.userId = uid
+                                    self.isSignedIn = true
+                                }
                             }
                         }
                     }
+                
                 Button(action: {
                     isPresentingLoginModal.toggle()
                 }) {
@@ -53,7 +62,6 @@ struct SignInView: View {
                 }
                 .offset(y: interpolate(animationProgress, delay: 0.5))
                 .animation(.easeInOut(duration: 0.5), value: animationProgress)
-                
             }
             .padding(.horizontal, 20)
             .onAppear {
@@ -63,6 +71,9 @@ struct SignInView: View {
             }
             .sheet(isPresented: $isPresentingLoginModal) {
                 LoginView(isPresentingLoginModal: $isPresentingLoginModal)
+            }
+            .navigationDestination(isPresented: $isSignedIn) {
+                TodoView(userId: userId)
             }
         }
     }
